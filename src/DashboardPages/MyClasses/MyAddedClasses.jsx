@@ -22,8 +22,6 @@ const MyAddedClasses = () => {
       });
   }, [url]);
 
-  // console.log(myClasses);
-
   return (
     <div>
       <h2
