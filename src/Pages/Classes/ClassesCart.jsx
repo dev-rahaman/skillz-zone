@@ -36,7 +36,6 @@ const ClassesCart = ({ classItem }) => {
   const currentUser = users.find((item) => item?.email === email);
 
   // console.log(currentUser?.role);
-  const student = currentUser?.role === "student";
   const instructor = currentUser?.role === "instructor";
   const admin = currentUser?.role === "admin";
 
@@ -85,7 +84,7 @@ const ClassesCart = ({ classItem }) => {
             "You have been selected to the class.",
             "success"
           );
-          fetch(`http://localhost:5000/my-selected-classes/${id}`, {
+          fetch(`http://localhost:5000/mySelectedClasses/${id}`, {
             method: "PATCH",
           })
             .then((res) => res.json())
@@ -116,6 +115,7 @@ const ClassesCart = ({ classItem }) => {
           <img src={imageURL} alt="Course" style={{ height: "150px" }} />
         </div>
         <div className="card__details">
+          <p className="card__instructor">ID:{_id}</p>
           <h2 className="card__name">Class Name:{className}</h2>
           <p className="card__instructor">Instructor:{instructorName}</p>
           <p className="card__email">Email: {instructorEmail}</p>
@@ -123,7 +123,6 @@ const ClassesCart = ({ classItem }) => {
           <p className="card__seats">Enrolled Students: {enrolledStudents}</p>
           <p className="card__price">Price: ${price}</p>
           <p className="card__price">status: {status}</p>
-
           <button
             onClick={() => handleSelectButton(_id)}
             disabled={
