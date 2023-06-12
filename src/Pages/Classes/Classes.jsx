@@ -1,10 +1,3 @@
-// TODO: need fetch data from server
-// TODO: Available seats
-// TODO: Select Button. If the user is not logged in, then tell the user to log in before selecting the course. This button will be disabled if:
-// TODO: Available seats are 0
-// TODO: Logged in as admin/instructor
-// TODO: The class card background will be red if the available seats are 0.
-
 import React, { useState, useEffect } from "react";
 import ClassesCart from "./ClassesCart";
 
