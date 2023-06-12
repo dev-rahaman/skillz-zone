@@ -41,6 +41,7 @@ const ClassesCart = ({ classItem }) => {
   const admin = currentUser?.role === "admin";
 
   const {
+    _id,
     className,
     instructorName,
     instructorEmail,
@@ -53,19 +54,19 @@ const ClassesCart = ({ classItem }) => {
     adminFeedback,
   } = classItem;
 
-  const newData = {
-    className: className,
-    instructorName: instructorName,
-    instructorEmail: instructorEmail,
-    availableSeats: availableSeats,
-    price: price,
-    classDetails: classDetails,
-    imageURL: imageURL,
-    status: status,
-    adminFeedback: adminFeedback,
-    enrolledStudents: enrolledStudents,
-    email: user?.email,
-  };
+  // const newData = {
+  //   className: className,
+  //   instructorName: instructorName,
+  //   instructorEmail: instructorEmail,
+  //   availableSeats: availableSeats,
+  //   price: price,
+  //   classDetails: classDetails,
+  //   imageURL: imageURL,
+  //   status: status,
+  //   adminFeedback: adminFeedback,
+  //   enrolledStudents: enrolledStudents,
+  //   email: user?.email,
+  // };
 
   const handleSelectButton = (id) => {
     if (user) {
@@ -79,13 +80,13 @@ const ClassesCart = ({ classItem }) => {
         confirmButtonText: "Yes, add me!",
       }).then((result) => {
         if (result.isConfirmed) {
-          Swal.fire("Added!", "You have been added to the class.", "success");
-          fetch("http://localhost:5000/mySelectedClasses", {
-            method: "POST",
-            headers: {
-              "content-type": "application/json",
-            },
-            body: JSON.stringify(newData),
+          Swal.fire(
+            "Selected!",
+            "You have been selected to the class.",
+            "success"
+          );
+          fetch(`http://localhost:5000/my-selected-classes/${id}`, {
+            method: "PATCH",
           })
             .then((res) => res.json())
             .then((data) => {
@@ -124,7 +125,7 @@ const ClassesCart = ({ classItem }) => {
           <p className="card__price">status: {status}</p>
 
           <button
-            onClick={handleSelectButton}
+            onClick={() => handleSelectButton(_id)}
             disabled={
               availableSeats == 0 ||
               instructor ||
