@@ -36,11 +36,11 @@ const ClassesCart = ({ classItem }) => {
   const currentUser = users.find((item) => item?.email === email);
 
   // console.log(currentUser?.role);
+  const student = currentUser?.role === "student";
   const instructor = currentUser?.role === "instructor";
   const admin = currentUser?.role === "admin";
 
   const {
-    _id,
     className,
     instructorName,
     instructorEmail,
@@ -53,19 +53,19 @@ const ClassesCart = ({ classItem }) => {
     adminFeedback,
   } = classItem;
 
-  // const newData = {
-  //   className: className,
-  //   instructorName: instructorName,
-  //   instructorEmail: instructorEmail,
-  //   availableSeats: availableSeats,
-  //   price: price,
-  //   classDetails: classDetails,
-  //   imageURL: imageURL,
-  //   status: status,
-  //   adminFeedback: adminFeedback,
-  //   enrolledStudents: enrolledStudents,
-  //   email: user?.email,
-  // };
+  const newData = {
+    className: className,
+    instructorName: instructorName,
+    instructorEmail: instructorEmail,
+    availableSeats: availableSeats,
+    price: price,
+    classDetails: classDetails,
+    imageURL: imageURL,
+    status: status,
+    adminFeedback: adminFeedback,
+    enrolledStudents: enrolledStudents,
+    email: user?.email,
+  };
 
   const handleSelectButton = (id) => {
     if (user) {
@@ -79,13 +79,13 @@ const ClassesCart = ({ classItem }) => {
         confirmButtonText: "Yes, add me!",
       }).then((result) => {
         if (result.isConfirmed) {
-          Swal.fire(
-            "Selected!",
-            "You have been selected to the class.",
-            "success"
-          );
-          fetch(`http://localhost:5000/handleSelectButton/${id}`, {
-            method: "PATCH",
+          Swal.fire("Added!", "You have been added to the class.", "success");
+          fetch("http://localhost:5000/mySelectedClasses", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(newData),
           })
             .then((res) => res.json())
             .then((data) => {
@@ -115,7 +115,6 @@ const ClassesCart = ({ classItem }) => {
           <img src={imageURL} alt="Course" style={{ height: "150px" }} />
         </div>
         <div className="card__details">
-          <p className="card__instructor">ID:{_id}</p>
           <h2 className="card__name">Class Name:{className}</h2>
           <p className="card__instructor">Instructor:{instructorName}</p>
           <p className="card__email">Email: {instructorEmail}</p>
@@ -123,8 +122,9 @@ const ClassesCart = ({ classItem }) => {
           <p className="card__seats">Enrolled Students: {enrolledStudents}</p>
           <p className="card__price">Price: ${price}</p>
           <p className="card__price">status: {status}</p>
+
           <button
-            onClick={() => handleSelectButton(_id)}
+            onClick={handleSelectButton}
             disabled={
               availableSeats == 0 ||
               instructor ||

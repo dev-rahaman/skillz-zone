@@ -34,6 +34,17 @@ const CheckoutForm = ({
   const [selectedClassId, setSelectedClassId] = useState();
   const [classesId, setClassesId] = useState([]);
 
+  useEffect(() => {
+    fetch("http://localhost:5000/all-classes")
+      .then((res) => res.json())
+      .then((data) => {
+        setClassesId(data);
+      });
+  }, []);
+
+  const foundClass = classesId.find((obj) => console.log(obj._id == buttonId));
+  console.log(foundClass);
+
   // const {
   //   adminFeedback,
   //   availableSeats,
