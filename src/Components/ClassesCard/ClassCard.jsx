@@ -31,9 +31,7 @@ const ClassCard = ({ classItem }) => {
           body: JSON.stringify(classItem),
         })
           .then((res) => res.json())
-          .then((data) => {
-            // console.log(data);
-          });
+          .then((data) => {});
       }
     });
   };

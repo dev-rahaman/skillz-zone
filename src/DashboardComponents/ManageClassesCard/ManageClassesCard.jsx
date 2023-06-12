@@ -76,12 +76,10 @@ const ManageClassesCard = ({ classItem, idx }) => {
 
   const handleFeedbackChange = (event) => {
     setFeedback(event.target.value);
-    // console.log(event.target.value);
   };
 
   const handleConfirmSendFeedback = () => {
     setShowModal(false);
-    // console.log(feedback);
     fetch("https://skillz-zone-server.vercel.app/feedback", {
       method: "POST",
       headers: {
@@ -92,7 +90,6 @@ const ManageClassesCard = ({ classItem, idx }) => {
       .then((res) => res.json())
       .then((data) => {
         if (data.insertedId) {
-          // reset();
           Swal.fire({
             position: "top-center",
             icon: "success",
