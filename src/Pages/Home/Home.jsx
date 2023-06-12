@@ -6,7 +6,6 @@ import PopularClasses from "../../Components/PopularClasses/PopularClasses";
 import PopularInstructor from "../../Components/PopularInstructor/PopularInstructor";
 
 const Home = () => {
-  // useTitle("Home");
   return (
     <div>
       <Slider></Slider>
