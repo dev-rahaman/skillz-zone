@@ -23,7 +23,7 @@ const ClassCard = ({ classItem }) => {
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire("Added!", "Your file has been added.", "success");
-        fetch("https://skillz-zone-server.vercel.app/mySelectedClasses", {
+        fetch("http://localhost:5000/mySelectedClasses", {
           method: "POST",
           headers: {
             "content-type": "application/json",

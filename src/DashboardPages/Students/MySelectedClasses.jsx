@@ -13,7 +13,7 @@ const MySelectedClasses = () => {
     ["mySelectedClasses", user?.email],
     async () => {
       const res = await fetch(
-        `https://skillz-zone-server.vercel.app/mySelectedClasses/${user?.email}`,
+        `http://localhost:5000/mySelectedClasses/${user?.email}`,
         {
           headers: {
             authorization: `bearer ${token}`,

@@ -63,7 +63,7 @@ const LoginForm = () => {
           password: loggedUser?.password,
           role: "student",
         };
-        fetch("https://skillz-zone-server.vercel.app/users", {
+        fetch("http://localhost:5000/users", {
           method: "POST",
           headers: {
             "content-type": "application/json",
@@ -86,7 +86,7 @@ const LoginForm = () => {
         <label>Email</label>
         <input type="email" {...register("email", { required: true })} />
         {errors.email && (
-          <span style={{ color: red }}>This field is required</span>
+          <span style={{ color: "red" }}>This field is required</span>
         )}
         <label>Password</label>
         <div className="password-filed">

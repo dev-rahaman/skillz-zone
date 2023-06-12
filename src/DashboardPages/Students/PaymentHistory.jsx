@@ -12,14 +12,11 @@ const PaymentHistory = () => {
   const { data: fetchedUsers = [] } = useQuery(
     ["payments"],
     async () => {
-      const res = await fetch(
-        `https://skillz-zone-server.vercel.app/payments/${user?.email}`,
-        {
-          headers: {
-            authorization: `bearer ${token}`,
-          },
-        }
-      );
+      const res = await fetch(`http://localhost:5000/payments/${user?.email}`, {
+        headers: {
+          authorization: `bearer ${token}`,
+        },
+      });
       return res.json();
     },
     {

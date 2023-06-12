@@ -10,7 +10,7 @@ const UserTable = ({ user, idx }) => {
   );
 
   const handleMakeAdmin = (id) => {
-    fetch(`https://skillz-zone-server.vercel.app/users/admin/${id}`, {
+    fetch(`http://localhost:5000/users/admin/${id}`, {
       method: "PATCH",
     })
       .then((res) => res.json())
@@ -29,7 +29,7 @@ const UserTable = ({ user, idx }) => {
   };
 
   const handleMakeInstructor = (id) => {
-    fetch(`https://skillz-zone-server.vercel.app/users/instructor/${id}`, {
+    fetch(`http://localhost:5000/users/instructor/${id}`, {
       method: "PATCH",
     })
       .then((res) => res.json())

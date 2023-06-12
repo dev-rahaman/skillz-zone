@@ -26,7 +26,7 @@ const ManageClassesCard = ({ classItem, idx }) => {
   } = classItem;
 
   const handleApprove = (id) => {
-    fetch(`https://skillz-zone-server.vercel.app/classes/approved/${id}`, {
+    fetch(`http://localhost:5000/classes/approved/${id}`, {
       method: "PATCH",
     })
       .then((res) => res.json())
@@ -46,7 +46,7 @@ const ManageClassesCard = ({ classItem, idx }) => {
   };
 
   const handleDeny = (id) => {
-    fetch(`https://skillz-zone-server.vercel.app/classes/deny/${id}`, {
+    fetch(`http://localhost:5000/classes/deny/${id}`, {
       method: "PATCH",
     })
       .then((res) => res.json())
@@ -82,7 +82,7 @@ const ManageClassesCard = ({ classItem, idx }) => {
   const handleConfirmSendFeedback = () => {
     setShowModal(false);
     // console.log(feedback);
-    fetch("https://skillz-zone-server.vercel.app/feedback", {
+    fetch("http://localhost:5000/feedback", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

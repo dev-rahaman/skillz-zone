@@ -3,13 +3,13 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import { useQuery } from "@tanstack/react-query";
 
 const Feedback = () => {
-  // https://skillz-zone-server.vercel.app/instructor/rsrahaman@gamil.com
+  // http://localhost:5000/instructor/rsrahaman@gamil.com
   const [feedback1, setFeedback1] = useState([]);
   const { user, loading } = useContext(AuthContext);
 
   const token = localStorage.getItem("access-token");
 
-  const url = `https://skillz-zone-server.vercel.app/instructor/${user?.email}`;
+  const url = `http://localhost:5000/instructor/${user?.email}`;
   useEffect(() => {
     fetch(url, {
       method: "GET",

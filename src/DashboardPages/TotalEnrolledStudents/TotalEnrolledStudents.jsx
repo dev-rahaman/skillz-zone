@@ -13,7 +13,7 @@ const TotalEnrolledStudents = () => {
     ["enrolledStudents", user?.email],
     async () => {
       const res = await fetch(
-        `https://skillz-zone-server.vercel.app/enrolledStudents/${user?.email}`,
+        `http://localhost:5000/enrolledStudents/${user?.email}`,
         {
           headers: {
             authorization: `bearer ${token}`,

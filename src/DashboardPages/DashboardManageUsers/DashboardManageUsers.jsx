@@ -12,7 +12,7 @@ const DashboardManageUsers = () => {
   const { data: users = [] } = useQuery(
     ["users"],
     async () => {
-      const res = await fetch(`https://skillz-zone-server.vercel.app/users/`, {
+      const res = await fetch(`http://localhost:5000/users/`, {
         headers: {
           authorization: `bearer ${token}`,
         },

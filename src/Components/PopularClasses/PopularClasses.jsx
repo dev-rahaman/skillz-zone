@@ -5,7 +5,7 @@ const PopularClasses = () => {
   const [classes, setClasses] = useState([]);
 
   useEffect(() => {
-    fetch("https://skillz-zone-server.vercel.app/all-classes")
+    fetch("http://localhost:5000/all-classes")
       .then((res) => res.json())
       .then((data) => {
         setClasses(data);

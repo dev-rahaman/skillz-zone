@@ -7,7 +7,20 @@ import { useNavigate } from "react-router-dom";
 
 const token = localStorage.getItem("access-token");
 
-const CheckoutForm = ({ price }) => {
+const CheckoutForm = ({
+  money,
+  adminFeedback,
+  availableSeats,
+  className,
+  email,
+  enrolledStudents,
+  imageURL,
+  classDetails,
+  instructorEmail,
+  instructorName,
+  price,
+  status,
+}) => {
   const stripe = useStripe();
   const elements = useElements();
   const { user } = useContext(AuthContext);
@@ -19,6 +32,46 @@ const CheckoutForm = ({ price }) => {
   const navigate = useNavigate();
   const [buttonId, setButtonId] = useState(null);
   const [selectedClassId, setSelectedClassId] = useState();
+  const [classes, setClasses] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/all-classes")
+      .then((res) => res.json())
+      .then((data) => {
+        const approvedClasses = data.find(
+          (classItem) => classItem._id === buttonId
+        );
+        setClasses(approvedClasses);
+      });
+  }, []);
+
+  // const {
+  //   adminFeedback,
+  //   availableSeats,
+  //   className,
+  //   email,
+  //   enrolledStudents,
+  //   imageURL,
+  //   classDetails,
+  //   instructorEmail,
+  //   instructorName,
+  //   price,
+  //   status,
+  // } = selectedClassData;
+
+  // const newData = {
+  //   adminFeedback,
+  //   availableSeats,
+  //   className,
+  //   email,
+  //   enrolledStudentsm,
+  //   imageURL,
+  //   classDetails,
+  //   instructorEmail,
+  //   instructorName,
+  //   price,
+  //   status,
+  // };
 
   useEffect(() => {
     const storedButtonId = localStorage.getItem("buttonId");
@@ -33,12 +86,12 @@ const CheckoutForm = ({ price }) => {
   }, []);
 
   useEffect(() => {
-    if (price > 0 && !isNaN(price)) {
-      axiosSecure.post("/create-payment-intent", { price }).then((res) => {
+    if (money > 0 && !isNaN(money)) {
+      axiosSecure.post("/create-payment-intent", { money }).then((res) => {
         setClientSecret(res.data.clientSecret);
       });
     }
-  }, [price, axiosSecure]);
+  }, [money, axiosSecure]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -87,12 +140,12 @@ const CheckoutForm = ({ price }) => {
       const payment = {
         email: user?.email,
         transactionId: paymentIntent.id,
-        price,
+        money,
         date: new Date(),
         status: "service pending",
       };
       // save the payment details on database
-      fetch(`https://skillz-zone-server.vercel.app/payments/`, {
+      fetch(`http://localhost:5000/payments/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -109,28 +162,37 @@ const CheckoutForm = ({ price }) => {
         });
 
       // Delete from my Selected Classes
-      fetch(
-        `https://skillz-zone-server.vercel.app/mySelectedClasses/${buttonId}`,
-        {
-          method: "DELETE",
-          headers: {
-            authorization: `bearer ${token}`,
-          },
-        }
-      )
+      fetch(`http://localhost:5000/mySelectedClasses/${buttonId}`, {
+        method: "DELETE",
+        headers: {
+          authorization: `bearer ${token}`,
+        },
+      })
         .then((res) => res.json())
         .then((data) => {
           // console.log(data );
         });
 
       // save the enrolled classes on database
-      fetch(`https://skillz-zone-server.vercel.app/myEnrolledClasses/`, {
+      fetch(`http://localhost:5000/myEnrolledClasses/`, {
         method: "POST",
         headers: {
           authorization: `bearer ${token}`,
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(selectedClassId),
+        body: JSON.stringify({
+          adminFeedback,
+          availableSeats,
+          className,
+          email,
+          enrolledStudents,
+          imageURL,
+          classDetails,
+          instructorEmail,
+          instructorName,
+          price,
+          status,
+        }),
       })
         .then((res) => res.json())
         .then((data) => {
@@ -138,7 +200,7 @@ const CheckoutForm = ({ price }) => {
         });
 
       // save the enrolled students on database
-      fetch(`https://skillz-zone-server.vercel.app/enrolled-students/`, {
+      fetch(`http://localhost:5000/enrolled-students/`, {
         method: "POST",
         headers: {
           authorization: `bearer ${token}`,
@@ -158,7 +220,18 @@ const CheckoutForm = ({ price }) => {
         });
       // =========================================================================
 
-      fetch(`https://skillz-zone-server.vercel.app/all-classes/${buttonId}`, {
+      // useEffect(() => {
+      //   fetch("http://localhost:5000/all-classes")
+      //     .then((res) => res.json())
+      //     .then((data) => {
+      //       const approvedClasses = data.filter(
+      //         (classItem) => classItem.status === "approved"
+      //       );
+      //       setClasses(approvedClasses);
+      //     });
+      // }, []);
+
+      fetch(`http://localhost:5000/all-classes/${buttonId}`, {
         method: "PATCH",
         headers: {
           authorization: `bearer ${token}`,

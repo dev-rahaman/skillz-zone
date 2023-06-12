@@ -16,7 +16,7 @@ const ClassesCart = ({ classItem }) => {
   const { data: fetchedUsers = [] } = useQuery(
     ["users"],
     async () => {
-      const res = await fetch(`https://skillz-zone-server.vercel.app/users/`, {
+      const res = await fetch(`http://localhost:5000/users/`, {
         headers: {
           authorization: `bearer ${token}`,
         },
@@ -41,7 +41,6 @@ const ClassesCart = ({ classItem }) => {
   const admin = currentUser?.role === "admin";
 
   const {
-    _id,
     className,
     instructorName,
     instructorEmail,
@@ -81,7 +80,7 @@ const ClassesCart = ({ classItem }) => {
       }).then((result) => {
         if (result.isConfirmed) {
           Swal.fire("Added!", "You have been added to the class.", "success");
-          fetch("https://skillz-zone-server.vercel.app/mySelectedClasses", {
+          fetch("http://localhost:5000/mySelectedClasses", {
             method: "POST",
             headers: {
               "content-type": "application/json",
