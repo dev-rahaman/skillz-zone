@@ -1,23 +1,43 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import InstructorCard from "../../Components/InstructorCard/InstructorCard";
+import { AuthContext } from "../../Provider/AuthProvider";
+import { useQuery } from "@tanstack/react-query";
 // import InstructorCard from "../../Components/InstructorCard/InstructorCard";
 
 const Instructors = () => {
-  const [instructors, setInstructors] = useState([]);
-  useEffect(() => {
-    fetch("http://localhost:5000/instructors", {
-      method: "GET",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setInstructors(data);
+  const [users1, setUsers1] = useState([]);
+  const { loading } = useContext(AuthContext);
+  console.log(users1);
+
+  const token = localStorage.getItem("access-token");
+
+  const { data: users = [] } = useQuery(
+    ["users"],
+    async () => {
+      const res = await fetch(`http://localhost:5000/users/`, {
+        headers: {
+          authorization: `bearer ${token}`,
+        },
       });
-  }, []);
+      const data = await res.json();
+      const filteredUsers = data.filter((user) => user.role === "instructor");
+      return filteredUsers;
+    },
+    {
+      enabled: !loading,
+    }
+  );
+  useEffect(() => {
+    if (users.length > 0) {
+      setUsers1(users);
+    }
+  }, [users]);
+
   return (
     <div>
       <div className="flex-container">
-        {instructors &&
-          instructors.map((instructorItem, idx) => (
+        {users1 &&
+          users1.map((instructorItem, idx) => (
             <InstructorCard
               key={idx}
               instructorItem={instructorItem}
