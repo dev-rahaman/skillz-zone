@@ -1,15 +1,5 @@
 import React from "react";
 
-// email
-// :
-// "alivababy2@gamil.com"
-// image
-// :
-// "https://alive-baby.web.app/assets/benner-robot2-f859ae56.png"
-// name
-// :
-// "alibaba.com"
-
 const InstructorCard = ({ instructorItem }) => {
   const { image, name, email, phoneNumber } = instructorItem;
   return (
