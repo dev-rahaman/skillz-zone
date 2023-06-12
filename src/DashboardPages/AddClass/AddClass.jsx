@@ -142,15 +142,6 @@ const AddClass = () => {
           ></textarea>
         </div>
         <div className="">
-          {/* <label className="label">
-            <span className="">Item Image*</span>
-          </label> */}
-          {/* <input
-            type="file"
-            {...register("image", { required: true })}
-            className=""
-          /> */}
-          {/* {errors.price && <p style={{ color: "red" }}>Price is required.</p>} */}
           <div className="">
             <label className="label">
               <span className="">imageURL*</span>

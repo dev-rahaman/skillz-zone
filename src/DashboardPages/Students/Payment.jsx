@@ -4,12 +4,10 @@ import CheckoutForm from "../CheckoutForm/CheckoutForm";
 import useMySelectedClasses from "../../Hooks/usemySelectedClasses";
 import { useEffect, useState } from "react";
 
-// TODO: provide publishable Key
 const stripePromise = loadStripe(import.meta.env.VITE_STIPE_TEST_KEY_PK);
 
 const Payment = () => {
   const [selectedClassData, setSelectedClassData] = useState();
-  // const [mySelectedClasses] = useMySelectedClasses();
 
   useEffect(() => {
     const storedSelectedClass = localStorage.getItem("selectedClass");
