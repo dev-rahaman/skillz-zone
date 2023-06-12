@@ -4,16 +4,15 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import { useQuery } from "@tanstack/react-query";
 
 const PopularInstructor = () => {
-  const [users1, setUsers1] = useState([]);
+  const [popularInstructor, setPopularInstructor] = useState([]);
   const { loading } = useContext(AuthContext);
-  console.log(users1);
 
   const token = localStorage.getItem("access-token");
 
   const { data: users = [] } = useQuery(
     ["users"],
     async () => {
-      const res = await fetch(`http://localhost:5000/users/`, {
+      const res = await fetch(`https://skillz-zone-server.vercel.app/users/`, {
         headers: {
           authorization: `bearer ${token}`,
         },
@@ -29,14 +28,16 @@ const PopularInstructor = () => {
   );
 
   useEffect(() => {
-    setUsers1(users);
+    if (users.length > 0) {
+      setPopularInstructor(users);
+    }
   }, [users]);
 
   return (
     <div>
       <div className="flex-container">
-        {users1 &&
-          users1.map((instructorItem, idx) => (
+        {popularInstructor &&
+          popularInstructor.map((instructorItem, idx) => (
             <InstructorCard
               key={idx}
               instructorItem={instructorItem}
