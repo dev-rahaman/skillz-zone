@@ -5,10 +5,9 @@ import { RiEyeFill, RiEyeOffFill } from "react-icons/ri";
 import "../Login/Login.css";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
-// import useTitle from "../../Components/useTitle/useTilt.";
+
 import { useLocation, useNavigate } from "react-router-dom";
 const Register = () => {
-  // useTitle("Registration");
   const { createUser, logout, updateUser } = useContext(AuthContext);
 
   const navigate = useNavigate();
@@ -143,9 +142,6 @@ const Register = () => {
           <div>
             <label>Photo URL:</label>
             <input {...register("photoURL")} />
-            {/* {errors.name && (
-          <p style={{ color: "red" }}>Photo URL is required.</p>
-        )} */}
           </div>
           <div className="my-5">
             <label>Gender:</label>
@@ -162,14 +158,10 @@ const Register = () => {
           <div>
             <label>Phone Number:</label>
             <input {...register("phoneNumber")} />
-            {/* {errors.number && (
-          <p style={{ color: "red" }}>Phone Number is required.</p>
-        )} */}
           </div>
           <div>
             <label>Address:</label>
             <input {...register("address")} />
-            {/* {errors.name && <p style={{ color: "red" }}>Address is required.</p>} */}
           </div>
           <button type="submit">Register</button>
         </form>

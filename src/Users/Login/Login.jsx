@@ -3,17 +3,14 @@ import { useForm } from "react-hook-form";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./Login.css";
-// import useTitle from "../../Components/useTitle/useTilt.";
+
 import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
 import { FaGoogle } from "react-icons/fa";
 
-// TODO: Keep at least one social login
-
 const token = localStorage.getItem("access-token");
 
 const LoginForm = () => {
-  // useTitle("Login");
   const { loginUser, GoogleSignIn } = useContext(AuthContext);
   const [disabled, setDisabled] = useState(true);
   const navigate = useNavigate();
