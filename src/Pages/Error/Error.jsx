@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import error from "../../../public/error.jpg";
 
 const Error = () => {
-  // useTitle("404");
   return (
     <div style={{ position: "relative" }}>
       <img src={error} alt="" className="error-image" />
