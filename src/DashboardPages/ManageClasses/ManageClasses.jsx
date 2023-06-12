@@ -6,7 +6,7 @@ const Cart = () => {
   const [classes, setClasses] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/all-classes", {
+    fetch("https://skillz-zone-server.vercel.app/all-classes", {
       method: "GET",
     })
       .then((res) => res.json())

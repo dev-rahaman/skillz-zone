@@ -31,7 +31,7 @@ const AddClass = () => {
       adminFeedback: "",
       selected: "false",
     };
-    fetch("http://localhost:5000/add-classes", {
+    fetch("https://skillz-zone-server.vercel.app/add-classes", {
       method: "POST",
       headers: {
         "content-type": "application/json",

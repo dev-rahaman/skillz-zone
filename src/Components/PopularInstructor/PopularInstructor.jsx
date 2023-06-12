@@ -4,7 +4,7 @@ import InstructorCard from "../InstructorCard/InstructorCard";
 const PopularInstructor = () => {
   const [instructors, setInstructors] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/instructors", {
+    fetch("https://skillz-zone-server.vercel.app/instructors", {
       method: "GET",
     })
       .then((res) => res.json())

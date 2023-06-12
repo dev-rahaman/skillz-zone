@@ -8,7 +8,7 @@ const MyAddedClasses = () => {
   const [myClasses, setMyClasses] = useState([]);
   const { user } = useContext(AuthContext);
 
-  const url = `http://localhost:5000/add-classes/${user?.email}`;
+  const url = `https://skillz-zone-server.vercel.app/add-classes/${user?.email}`;
   useEffect(() => {
     fetch(url, {
       method: "GET",

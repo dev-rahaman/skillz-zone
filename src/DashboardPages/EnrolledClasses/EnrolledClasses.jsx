@@ -7,7 +7,9 @@ const EnrolledClasses = () => {
   const { user } = useContext(AuthContext);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/myEnrolledClasses/${user?.email}`)
+    fetch(
+      `https://skillz-zone-server.vercel.app/myEnrolledClasses/${user?.email}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setEnrolledClasses(data);

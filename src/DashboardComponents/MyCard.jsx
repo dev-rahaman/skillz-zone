@@ -19,7 +19,7 @@ const MyCard = ({ item, idx, classes, setClasses }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/mySelectedClasses/${id}`, {
+        fetch(`https://skillz-zone-server.vercel.app/mySelectedClasses/${id}`, {
           method: "DELETE",
           headers: {
             authorization: `bearer ${token}`,

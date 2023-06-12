@@ -14,7 +14,7 @@ const Instructors = () => {
   const { data: users = [] } = useQuery(
     ["users"],
     async () => {
-      const res = await fetch(`http://localhost:5000/users/`, {
+      const res = await fetch(`https://skillz-zone-server.vercel.app/users/`, {
         headers: {
           authorization: `bearer ${token}`,
         },

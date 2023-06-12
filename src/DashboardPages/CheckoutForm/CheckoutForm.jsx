@@ -35,7 +35,7 @@ const CheckoutForm = ({
   const [classesId, setClassesId] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/all-classes")
+    fetch("https://skillz-zone-server.vercel.app/all-classes")
       .then((res) => res.json())
       .then((data) => {
         setClassesId(data);
@@ -145,7 +145,7 @@ const CheckoutForm = ({
         status: "service pending",
       };
       // save the payment details on database
-      fetch(`http://localhost:5000/payments/`, {
+      fetch(`https://skillz-zone-server.vercel.app/payments/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -162,19 +162,22 @@ const CheckoutForm = ({
         });
 
       // Delete from my Selected Classes
-      fetch(`http://localhost:5000/mySelectedClasses/${buttonId}`, {
-        method: "DELETE",
-        headers: {
-          authorization: `bearer ${token}`,
-        },
-      })
+      fetch(
+        `https://skillz-zone-server.vercel.app/mySelectedClasses/${buttonId}`,
+        {
+          method: "DELETE",
+          headers: {
+            authorization: `bearer ${token}`,
+          },
+        }
+      )
         .then((res) => res.json())
         .then((data) => {
           // console.log(data );
         });
 
       // save the enrolled classes on database
-      fetch(`http://localhost:5000/myEnrolledClasses/`, {
+      fetch(`https://skillz-zone-server.vercel.app/myEnrolledClasses/`, {
         method: "POST",
         headers: {
           authorization: `bearer ${token}`,
@@ -200,7 +203,7 @@ const CheckoutForm = ({
         });
 
       // save the enrolled students on database
-      fetch(`http://localhost:5000/enrolled-students/`, {
+      fetch(`https://skillz-zone-server.vercel.app/enrolled-students/`, {
         method: "POST",
         headers: {
           authorization: `bearer ${token}`,
@@ -221,7 +224,7 @@ const CheckoutForm = ({
       // =========================================================================
 
       // useEffect(() => {
-      //   fetch("http://localhost:5000/all-classes")
+      //   fetch("https://skillz-zone-server.vercel.app/all-classes")
       //     .then((res) => res.json())
       //     .then((data) => {
       //       const approvedClasses = data.filter(
@@ -231,7 +234,7 @@ const CheckoutForm = ({
       //     });
       // }, []);
 
-      fetch(`http://localhost:5000/all-classes/${classes}`, {
+      fetch(`https://skillz-zone-server.vercel.app/all-classes/${classes}`, {
         method: "PATCH",
         headers: {
           authorization: `bearer ${token}`,
