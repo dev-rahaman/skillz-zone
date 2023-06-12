@@ -84,7 +84,7 @@ const ClassesCart = ({ classItem }) => {
             "You have been selected to the class.",
             "success"
           );
-          fetch(`http://localhost:5000/mySelectedClasses/${id}`, {
+          fetch(`http://localhost:5000/handleSelectButton/${id}`, {
             method: "PATCH",
           })
             .then((res) => res.json())

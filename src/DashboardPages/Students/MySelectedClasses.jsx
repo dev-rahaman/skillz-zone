@@ -3,34 +3,51 @@ import MyCard from "../../DashboardComponents/MyCard";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { useQuery } from "@tanstack/react-query";
 
+// http://localhost:5000/mySelectedClasses/${user?.email}
+
 const MySelectedClasses = () => {
   const [classes, setClasses] = useState([]);
   const { user, loading } = useContext(AuthContext);
 
   const token = localStorage.getItem("access-token");
 
-  const { data: mySelectedClasses = [] } = useQuery(
-    ["mySelectedClasses", user?.email],
-    async () => {
-      const res = await fetch(
-        `http://localhost:5000/mySelectedClasses/${user?.email}`,
-        {
-          headers: {
-            authorization: `bearer ${token}`,
-          },
-        }
-      );
-      return res.json();
-    },
-    {
-      enabled: !loading,
-    }
-  );
   useEffect(() => {
-    if (mySelectedClasses.length > 0) {
-      setClasses(mySelectedClasses);
-    }
-  }, [mySelectedClasses]);
+    fetch(` http://localhost:5000/mySelectedClasses/${user?.email}`, {
+      headers: {
+        authorization: `bearer ${token}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setClasses(data);
+        console.log(data);
+      });
+  }, []);
+
+  // const { data: mySelectedClasses = [] } = useQuery(
+  //   ["mySelectedClasses", user?.email],
+  //   async () => {
+  //     const res = await fetch(
+  //       `http://localhost:5000/mySelectedClasses/${user?.email}`,
+  //       {
+  //         headers: {
+  //           authorization: `bearer ${token}`,
+  //         },
+  //       }
+  //     );
+  //     return res.json();
+  //   },
+  //   {
+  //     enabled: !loading,
+  //   }
+  // );
+  // useEffect(() => {
+  //   if (mySelectedClasses.length > 0) {
+  //     setClasses(mySelectedClasses);
+  //   }
+  // }, [mySelectedClasses]);
+
+  // console.log(mySelectedClasses);
 
   const totalPrice = classes.reduce(
     (acc, curr) => acc + parseFloat(curr.price),
