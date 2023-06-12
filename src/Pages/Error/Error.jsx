@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
 import { Link } from "react-router-dom";
-// import useTitle from "../../Components/useTitle/useTilt.";
+
 import error from "../../../public/error.jpg";
 
 const Error = () => {
