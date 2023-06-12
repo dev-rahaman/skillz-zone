@@ -1,0 +1,108 @@
+.menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: #073453;
+  position: sticky;
+  top: 0px;
+  z-index: 999999;
+}
+.navbar-logo {
+  color: #fff;
+}
+.menu__logo {
+  font-size: 2rem;
+  font-weight: bold;
+}
+.menu__logo a {
+  text-decoration: none;
+}
+
+.menu__toggle {
+  display: none;
+  background-color: transparent;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #fff;
+}
+
+.menu__list {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+ul li a {
+  text-decoration: none;
+  font-size: 20px;
+  color: #fff;
+  margin: 15px;
+}
+
+.btnMenu button {
+  font-size: 20px;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.positionTwo {
+  position: relative;
+}
+
+.positionONe {
+  position: absolute;
+  background-color: #02162f;
+  color: #fcfcfc;
+  border-radius: 10px;
+  padding: 10px;
+  width: 350px;
+  right: 0;
+  z-index: 999;
+  box-shadow: -1px 3px 20px 7px rgba(16, 66, 102, 0.75);
+  -webkit-box-shadow: -1px 3px 20px 7px rgba(16, 66, 102, 0.75);
+  -moz-box-shadow: -1px 3px 20px 7px rgba(16, 66, 102, 0.75);
+}
+
+@media screen and (max-width: 768px) {
+  .positionONe {
+    right: -1px;
+  }
+  .menu__logo {
+    font-size: 20px;
+    color: #fff;
+  }
+
+  .menu__toggle {
+    display: block;
+    position: relative;
+  }
+
+  .menu__list {
+    display: none;
+    flex-direction: column;
+    width: 50%;
+    z-index: 1;
+    padding: 1rem;
+    background-color: #685c36;
+    position: absolute;
+    top: 55px;
+    right: 0px;
+  }
+
+  .btnMenu {
+    font-size: 15px;
+  }
+
+  .menu__item {
+    margin: 1rem 0;
+  }
+
+  .menu__list--open {
+    display: flex;
+  }
+}

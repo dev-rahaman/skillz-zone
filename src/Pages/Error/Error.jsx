@@ -1,0 +1,19 @@
+/* eslint-disable no-unused-vars */
+import React from "react";
+import { Link } from "react-router-dom";
+// import useTitle from "../../Components/useTitle/useTilt.";
+import error from "../../../public/error.jpg";
+
+const Error = () => {
+  // useTitle("404");
+  return (
+    <div style={{ position: "relative" }}>
+      <img src={error} alt="" className="error-image" />
+      <Link to="/">
+        <button className="error-btn">Back To Home</button>
+      </Link>
+    </div>
+  );
+};
+
+export default Error;

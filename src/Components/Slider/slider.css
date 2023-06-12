@@ -1,0 +1,74 @@
+/* Slider CSS */
+.slider {
+  position: relative;
+}
+
+.slider-image-container {
+  display: flex;
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+}
+
+.slider-image {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.slider-image.active {
+  opacity: 1;
+}
+
+.slider-controls {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.slider-control {
+  border: none;
+  background-color: transparent;
+  color: #7a7a7a;
+  font-size: 2rem;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.images {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+/* ============================= */
+.dot-container {
+  display: flex;
+  justify-content: center;
+  background-color: transparent;
+}
+
+.dot {
+  z-index: 9999;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: #02162f;
+  margin: 0 5px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.dot.active {
+  background-color: #36e0f7;
+}
+
+@media screen and (max-width: 768px) {
+  .slider-image-container {
+    height: 300px;
+  }
+}
