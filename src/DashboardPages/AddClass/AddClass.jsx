@@ -29,6 +29,7 @@ const AddClass = () => {
       status: "Pending",
       enrolledStudents: "0",
       adminFeedback: "",
+      selected: "false",
     };
     fetch("http://localhost:5000/add-classes", {
       method: "POST",

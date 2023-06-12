@@ -32,18 +32,7 @@ const CheckoutForm = ({
   const navigate = useNavigate();
   const [buttonId, setButtonId] = useState(null);
   const [selectedClassId, setSelectedClassId] = useState();
-  const [classes, setClasses] = useState([]);
-
-  useEffect(() => {
-    fetch("http://localhost:5000/all-classes")
-      .then((res) => res.json())
-      .then((data) => {
-        const approvedClasses = data.find(
-          (classItem) => classItem._id === buttonId
-        );
-        setClasses(approvedClasses);
-      });
-  }, []);
+  const [classesId, setClassesId] = useState([]);
 
   // const {
   //   adminFeedback,
@@ -231,7 +220,7 @@ const CheckoutForm = ({
       //     });
       // }, []);
 
-      fetch(`http://localhost:5000/all-classes/${buttonId}`, {
+      fetch(`http://localhost:5000/all-classes/${classes}`, {
         method: "PATCH",
         headers: {
           authorization: `bearer ${token}`,
