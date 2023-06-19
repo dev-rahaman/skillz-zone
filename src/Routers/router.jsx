@@ -18,6 +18,8 @@ import MyAddedClasses from "../DashboardPages/MyClasses/MyAddedClasses";
 import Feedback from "../DashboardPages/Feedback/Feedback";
 import PrivateRoute from "./PrivateRoute";
 import TotalEnrolledStudents from "../DashboardPages/TotalEnrolledStudents/TotalEnrolledStudents";
+import AdminRouters from "./AdminRouters";
+// import InstructorRouters from "./InstructorRouters";
 
 const router = createBrowserRouter([
   {
@@ -72,29 +74,53 @@ const router = createBrowserRouter([
       },
       // admin
       {
-        path: "/dashboard/manage-users",
-        element: <DashboardManageUsers></DashboardManageUsers>,
+        path: "manage/users",
+        element: (
+          <AdminRouters>
+            <DashboardManageUsers></DashboardManageUsers>
+          </AdminRouters>
+        ),
       },
       {
         path: "/dashboard/manage-classes",
-        element: <ManageClasses></ManageClasses>,
+        element: (
+          <AdminRouters>
+            <ManageClasses></ManageClasses>
+          </AdminRouters>
+        ),
       },
       // Instructors
       {
         path: "/dashboard/add-class",
-        element: <AddClassForm></AddClassForm>,
+        element: (
+          // <InstructorRouters>
+          <AddClassForm></AddClassForm>
+          // </InstructorRouters>
+        ),
       },
       {
         path: "/dashboard/my-classes",
-        element: <MyAddedClasses></MyAddedClasses>,
+        element: (
+          // <InstructorRouters>
+          <MyAddedClasses></MyAddedClasses>
+          // </InstructorRouters>
+        ),
       },
       {
         path: "/dashboard/total-enrolled-students",
-        element: <TotalEnrolledStudents></TotalEnrolledStudents>,
+        element: (
+          // <InstructorRouters>
+          <TotalEnrolledStudents></TotalEnrolledStudents>
+          // </InstructorRouters>
+        ),
       },
       {
         path: "/dashboard/feedback",
-        element: <Feedback></Feedback>,
+        element: (
+          // <InstructorRouters>
+          <Feedback></Feedback>
+          // </InstructorRouters>
+        ),
       },
     ],
   },

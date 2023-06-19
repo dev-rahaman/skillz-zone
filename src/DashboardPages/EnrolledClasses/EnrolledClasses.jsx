@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import EnrolledClassesCart from "./EnrolledClassesCart";
+const token = localStorage.getItem("access-token");
 
 const EnrolledClasses = () => {
   const [enrolledClasses, setEnrolledClasses] = useState([]);
@@ -8,7 +9,12 @@ const EnrolledClasses = () => {
 
   useEffect(() => {
     fetch(
-      `https://skillz-zone-server.vercel.app/myEnrolledClasses/${user?.email}`
+      `https://skillz-zone-server.vercel.app/myEnrolledClasses/${user?.email}`,
+      {
+        headers: {
+          authorization: `bearer ${token}`,
+        },
+      }
     )
       .then((res) => res.json())
       .then((data) => {
@@ -30,7 +36,7 @@ const EnrolledClasses = () => {
             <th>#</th>
             <th>Image</th>
             <th>Name</th>
-            <th>Price</th>
+            <th>Student ID:</th>
           </tr>
         </thead>
 
@@ -48,7 +54,7 @@ const EnrolledClasses = () => {
             <th>#</th>
             <th>Image</th>
             <th>Name</th>
-            <th>Price</th>
+            <th>Student ID:</th>
           </tr>
         </tfoot>
       </table>

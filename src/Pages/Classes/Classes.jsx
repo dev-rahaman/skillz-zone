@@ -1,11 +1,17 @@
 import React, { useState, useEffect } from "react";
 import ClassesCart from "./ClassesCart";
 
+const token = localStorage.getItem("access-token");
+
 const Classes = () => {
   const [classes, setClasses] = useState([]);
 
   useEffect(() => {
-    fetch("https://skillz-zone-server.vercel.app/all-classes")
+    fetch("https://skillz-zone-server.vercel.app/all-classes", {
+      headers: {
+        authorization: `bearer ${token}`,
+      },
+    })
       .then((res) => res.json())
       .then((data) => {
         const approvedClasses = data.filter(

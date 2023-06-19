@@ -7,10 +7,10 @@ const Slider = () => {
 
   const sliderImages = [
     {
-      image: "https://i.postimg.cc/YCGDRHL8/toy12.jpg",
+      image: "https://i.postimg.cc/sfqBYPSj/1.jpg",
     },
     {
-      image: "https://i.postimg.cc/vZJqSNWy/toy9.jpg",
+      image: "https://i.postimg.cc/BbKnYyDq/6.jpg",
     },
     {
       image: "https://i.postimg.cc/sgKpMHMx/toy8.webp",
@@ -119,13 +119,14 @@ const Slider = () => {
           </button>
         </div>
         <div className="dot-container">
-          {sliderImages.map((n, index) => (
-            <div
-              key={index}
-              className={`dot ${index === currentSlide ? "active" : ""}`}
-              onClick={() => handleDot(index)}
-            />
-          ))}
+          {sliderImages &&
+            sliderImages.map((n, index) => (
+              <div
+                key={index}
+                className={`dot ${index === currentSlide ? "active" : ""}`}
+                onClick={() => handleDot(index)}
+              />
+            ))}
         </div>
       </div>
     </>

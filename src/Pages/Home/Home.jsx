@@ -3,6 +3,7 @@ import Slider from "../../Components/Slider/Slider";
 import Headings from "../../Components/Headings/Headings";
 import PopularClasses from "../../Components/PopularClasses/PopularClasses";
 import PopularInstructor from "../../Components/PopularInstructor/PopularInstructor";
+import AlertBox from "../../Components/AlertBox/AlertBox";
 
 const Home = () => {
   return (
@@ -12,6 +13,7 @@ const Home = () => {
         heading={"-------------Popular Classes---------------"}
       ></Headings>
       <PopularClasses></PopularClasses>
+      <AlertBox></AlertBox>
       <Headings
         heading={"-------------Popular Instructors---------------"}
       ></Headings>

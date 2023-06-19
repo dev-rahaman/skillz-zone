@@ -34,17 +34,6 @@ const CheckoutForm = ({
   const [selectedClassId, setSelectedClassId] = useState();
   const [classesId, setClassesId] = useState([]);
 
-  useEffect(() => {
-    fetch("https://skillz-zone-server.vercel.app/all-classes")
-      .then((res) => res.json())
-      .then((data) => {
-        setClassesId(data);
-      });
-  }, []);
-
-  const foundClass = classesId.find((obj) => console.log(obj._id == buttonId));
-  console.log(foundClass);
-
   // const {
   //   adminFeedback,
   //   availableSeats,
@@ -87,9 +76,13 @@ const CheckoutForm = ({
 
   useEffect(() => {
     if (money > 0 && !isNaN(money)) {
-      axiosSecure.post("/create-payment-intent", { money }).then((res) => {
-        setClientSecret(res.data.clientSecret);
-      });
+      axiosSecure
+        .post("https://skillz-zone-server.vercel.app/create-payment-intent", {
+          money,
+        })
+        .then((res) => {
+          setClientSecret(res.data.clientSecret);
+        });
     }
   }, [money, axiosSecure]);
 
@@ -177,7 +170,7 @@ const CheckoutForm = ({
         });
 
       // save the enrolled classes on database
-      fetch(`https://skillz-zone-server.vercel.app/myEnrolledClasses/`, {
+      fetch(`https://skillz-zone-server.vercel.app/myEnrolledClasses`, {
         method: "POST",
         headers: {
           authorization: `bearer ${token}`,
@@ -223,18 +216,7 @@ const CheckoutForm = ({
         });
       // =========================================================================
 
-      // useEffect(() => {
-      //   fetch("https://skillz-zone-server.vercel.app/all-classes")
-      //     .then((res) => res.json())
-      //     .then((data) => {
-      //       const approvedClasses = data.filter(
-      //         (classItem) => classItem.status === "approved"
-      //       );
-      //       setClasses(approvedClasses);
-      //     });
-      // }, []);
-
-      fetch(`https://skillz-zone-server.vercel.app/all-classes/${classes}`, {
+      fetch(`https://skillz-zone-server.vercel.app/all-classes/${buttonId}`, {
         method: "PATCH",
         headers: {
           authorization: `bearer ${token}`,

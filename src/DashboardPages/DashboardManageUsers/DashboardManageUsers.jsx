@@ -2,13 +2,11 @@ import React, { useState, useEffect, useContext } from "react";
 import UserTable from "../../DashboardComponents/UserTable/UserTable";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { useQuery } from "@tanstack/react-query";
+const token = localStorage.getItem("access-token");
 
 const DashboardManageUsers = () => {
   const [users1, setUsers1] = useState([]);
   const { user, loading } = useContext(AuthContext);
-
-  const token = localStorage.getItem("access-token");
-
   const { data: users = [] } = useQuery(
     ["users"],
     async () => {

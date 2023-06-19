@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Swal from "sweetalert2";
-
+const token = localStorage.getItem("access-token");
 const UserTable = ({ user, idx }) => {
   const [makeAdminDisabled, setMakeAdminDisabled] = useState(
     user.role === "admin"
@@ -12,6 +12,9 @@ const UserTable = ({ user, idx }) => {
   const handleMakeAdmin = (id) => {
     fetch(`https://skillz-zone-server.vercel.app/users/admin/${id}`, {
       method: "PATCH",
+      headers: {
+        authorization: `bearer ${token}`,
+      },
     })
       .then((res) => res.json())
       .then((data) => {
@@ -31,6 +34,9 @@ const UserTable = ({ user, idx }) => {
   const handleMakeInstructor = (id) => {
     fetch(`https://skillz-zone-server.vercel.app/users/instructor/${id}`, {
       method: "PATCH",
+      headers: {
+        authorization: `bearer ${token}`,
+      },
     })
       .then((res) => res.json())
       .then((data) => {

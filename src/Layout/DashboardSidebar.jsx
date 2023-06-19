@@ -1,5 +1,8 @@
 // TODO: dynamic NavLink:
 import React, { useContext, useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
+import { AuthContext } from "../Provider/AuthProvider";
+import { useQuery } from "@tanstack/react-query";
 import {
   FaFileArchive,
   FaHistory,
@@ -10,11 +13,10 @@ import {
   FaEdit,
   FaHome,
 } from "react-icons/fa";
-import { NavLink } from "react-router-dom";
-import { AuthContext } from "../Provider/AuthProvider";
-import { useQuery } from "@tanstack/react-query";
+// import useAdmin from "../Hooks/useAdmin";
+// import useInstructor from "../Hooks/useInstructor";
 
-// const token = localStorage.getItem("access-token");
+const token = localStorage.getItem("access-token");
 
 const DashboardSidebar = () => {
   const { user, loading } = useContext(AuthContext);
@@ -22,7 +24,6 @@ const DashboardSidebar = () => {
 
   const [users, setUsers] = useState([]);
 
-  const token = localStorage.getItem("access-token");
   const { data: fetchedUsers = [] } = useQuery(
     ["users"],
     async () => {
@@ -49,6 +50,9 @@ const DashboardSidebar = () => {
   const student = currentUser?.role === "student";
   const instructor = currentUser?.role === "instructor";
   const admin = currentUser?.role === "admin";
+
+  // const [isAdmin] = useAdmin();
+  // const [isInstructor] = useInstructor();
 
   return (
     <div className="sidebar">

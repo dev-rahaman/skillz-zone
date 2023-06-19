@@ -3,11 +3,11 @@ import MyCard from "../../DashboardComponents/MyCard";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { useQuery } from "@tanstack/react-query";
 
+const token = localStorage.getItem("access-token");
+
 const MySelectedClasses = () => {
   const [classes, setClasses] = useState([]);
   const { user, loading } = useContext(AuthContext);
-
-  const token = localStorage.getItem("access-token");
 
   const { data: mySelectedClasses = [] } = useQuery(
     ["mySelectedClasses", user?.email],

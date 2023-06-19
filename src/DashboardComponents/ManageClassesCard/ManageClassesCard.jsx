@@ -3,6 +3,7 @@ import Swal from "sweetalert2";
 
 // TODO: SEND FEEDBACK DATA ON INSTRUCTOR
 // TODO: BY DEFAULT STATUS WILL BE PENDING
+const token = localStorage.getItem("access-token");
 
 const ManageClassesCard = ({ classItem, idx }) => {
   const [handleApproveDisabled, setHandleApproveDisabled] = useState(
@@ -28,6 +29,9 @@ const ManageClassesCard = ({ classItem, idx }) => {
   const handleApprove = (id) => {
     fetch(`https://skillz-zone-server.vercel.app/classes/approved/${id}`, {
       method: "PATCH",
+      headers: {
+        authorization: `bearer ${token}`,
+      },
     })
       .then((res) => res.json())
       .then((data) => {
@@ -48,6 +52,9 @@ const ManageClassesCard = ({ classItem, idx }) => {
   const handleDeny = (id) => {
     fetch(`https://skillz-zone-server.vercel.app/classes/deny/${id}`, {
       method: "PATCH",
+      headers: {
+        authorization: `bearer ${token}`,
+      },
     })
       .then((res) => res.json())
       .then((data) => {
@@ -78,18 +85,23 @@ const ManageClassesCard = ({ classItem, idx }) => {
     setFeedback(event.target.value);
   };
 
-  const handleConfirmSendFeedback = () => {
+  const handleConfirmSendFeedback = (e) => {
     setShowModal(false);
-    fetch("https://skillz-zone-server.vercel.app/feedback", {
-      method: "POST",
+    // e.preventDefault();
+    // const fed = e.target.value;
+    // console.log(fed);
+
+    fetch(`https://skillz-zone-server.vercel.app/feedback/${_id}`, {
+      method: "PATCH",
       headers: {
+        authorization: `bearer ${token}`,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ feedback, instructorEmail, className }),
+      body: JSON.stringify({ feedback: feedback }),
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data.insertedId) {
+        if (data.modifiedCount) {
           Swal.fire({
             position: "top-center",
             icon: "success",
@@ -109,6 +121,7 @@ const ManageClassesCard = ({ classItem, idx }) => {
       <div>
         <h2>{className}</h2>
         <p>Instructor: {instructorName}</p>
+        <p>ID: {_id}</p>
         <p>Email: {instructorEmail}</p>
         <p>Available Seats: {availableSeats}</p>
         <p>Price: {price}</p>
@@ -130,15 +143,22 @@ const ManageClassesCard = ({ classItem, idx }) => {
         <div className="modal">
           <div className="modal-content">
             <h3>Send Feedback</h3>
-            <textarea
-              value={feedback}
-              onChange={handleFeedbackChange}
-              placeholder="Enter your feedback..."
-            />
-            <div>
-              <button onClick={handleCloseModal}>Cancel</button>
-              <button onClick={handleConfirmSendFeedback}>Send</button>
-            </div>
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                handleConfirmSendFeedback(_id);
+              }}
+            >
+              <textarea
+                value={feedback}
+                onChange={handleFeedbackChange}
+                placeholder="Enter your feedback..."
+              />
+              <div>
+                <button onClick={handleCloseModal}>Cancel</button>
+                <button type="submit">Send</button>
+              </div>
+            </form>
           </div>
         </div>
       )}

@@ -7,7 +7,7 @@ import { useQuery } from "@tanstack/react-query";
 const Instructors = () => {
   const [users1, setUsers1] = useState([]);
   const { loading } = useContext(AuthContext);
-  console.log(users1);
+  // console.log(users1);
 
   const token = localStorage.getItem("access-token");
 

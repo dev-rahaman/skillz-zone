@@ -12,25 +12,19 @@
 -----------------ADMIN DASHBOARD -----------------
 
 8. It will be private & only an admin can access this route.
-9. The Deny and the Approve button will become disabled.
-10. Note: If the admin makes a user instructor, that user profile page will have the Instructor as the role
-11. If the Class is in the denied state by the admin, at that time, an admin can write feedback explaining why the Class was denied, which will appear in the feedback column.
+9. If the Class is in the denied state by the admin, at that time, an admin can write feedback explaining why the Class was denied, which will appear in the feedback column.
 
 ----------------- STUDENTS DASHBOARD-----------------
 
 12. the Available seats for the particular Class will be reduced by 1.
 13. Make sure to sort the payment history descending. The newest payment will be at the top
-14. You must display the relevant information on the Class on mySelectedClasses
-15. Instructors Page:
-16. Popular Classes Section
-17. Popular Instructors Section
+14. Popular Classes Section
+15. Popular Instructors Section
 
     -----------------bonus-----------------
 
-18. meaningful git commits
-19. readme file
-20. dark/light theme
-21. home page responsive
-22. Environment
-23. Implement JWT token
-24. 404
+16. meaningful git commits
+17. readme file
+18. dark/light theme
+19. home page responsive
+20. Implement JWT token

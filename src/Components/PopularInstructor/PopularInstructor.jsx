@@ -3,12 +3,11 @@ import InstructorCard from "../InstructorCard/InstructorCard";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { useQuery } from "@tanstack/react-query";
 
+const token = localStorage.getItem("access-token");
+
 const PopularInstructor = () => {
   const [popularInstructor, setPopularInstructor] = useState([]);
   const { loading } = useContext(AuthContext);
-
-  const token = localStorage.getItem("access-token");
-
   const { data: users = [] } = useQuery(
     ["users"],
     async () => {

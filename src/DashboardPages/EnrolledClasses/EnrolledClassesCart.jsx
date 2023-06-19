@@ -20,7 +20,7 @@ const EnrolledClassesCart = ({ idx, item }) => {
           <p>{item.className}</p>
         </td>
         <td>
-          <p>{item.price}</p>
+          <p>{item._id}</p>
         </td>
       </tr>
     </tbody>

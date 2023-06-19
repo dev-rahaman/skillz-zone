@@ -1,6 +1,8 @@
 import React from "react";
 import Swal from "sweetalert2";
 
+const token = localStorage.getItem("access-token");
+
 const ClassCard = ({ classItem }) => {
   const {
     className,
@@ -27,6 +29,7 @@ const ClassCard = ({ classItem }) => {
           method: "POST",
           headers: {
             "content-type": "application/json",
+            authorization: `bearer ${token}`,
           },
           body: JSON.stringify(classItem),
         })
@@ -38,8 +41,8 @@ const ClassCard = ({ classItem }) => {
 
   return (
     <div className="card">
-      <div className="card__image">
-        <img src={imageURL} alt="Course" />
+      <div>
+        <img src={imageURL} alt="Course" className="card__image-home" />
       </div>
       <div className="card__details">
         <h2 className="card__name">Class Name:{className}</h2>
@@ -47,9 +50,9 @@ const ClassCard = ({ classItem }) => {
         <p className="card__email">Email: {instructorEmail}</p>
         <p className="card__seats">Available Seats: {availableSeats}</p>
         <p className="card__price">Price: ${price}</p>
-        <button className="card__button" onClick={handlePopularCardButton}>
+        {/* <button className="card__button" onClick={handlePopularCardButton}>
           Select
-        </button>
+        </button> */}
       </div>
     </div>
   );

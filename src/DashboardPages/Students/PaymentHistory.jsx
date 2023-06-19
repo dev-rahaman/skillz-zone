@@ -33,6 +33,8 @@ const PaymentHistory = () => {
     }
   }, [fetchedUsers]);
 
+  console.log(payments);
+
   return (
     <div>
       <h2 style={{ textAlign: "center", fontSize: "40px" }}>Payment History</h2>
@@ -49,25 +51,26 @@ const PaymentHistory = () => {
               </tr>
             </thead>
             <tbody>
-              {payments.map((singleHistory, idx) => (
-                <tr key={idx}>
-                  <td>{idx + 1}</td>
-                  <td>{singleHistory.email}</td>
-                  <td>
-                    <p>
-                      {moment(singleHistory.date).format(
-                        "dddd, MMMM Do YYYY, h:mm:ss a"
-                      )}
-                    </p>
-                  </td>
-                  <td>
-                    <p>{singleHistory.price}</p>
-                  </td>
-                  <td>
-                    <p>{singleHistory.transactionId}</p>
-                  </td>
-                </tr>
-              ))}
+              {payments &&
+                payments.map((singleHistory, idx) => (
+                  <tr key={idx}>
+                    <td>{idx + 1}</td>
+                    <td>{singleHistory.email}</td>
+                    <td>
+                      <p>
+                        {moment(singleHistory.date).format(
+                          "dddd, MMMM Do YYYY, h:mm:ss a"
+                        )}
+                      </p>
+                    </td>
+                    <td>
+                      <p>{singleHistory.money}</p>
+                    </td>
+                    <td>
+                      <p>{singleHistory.transactionId}</p>
+                    </td>
+                  </tr>
+                ))}
             </tbody>
             <tfoot>
               <tr>
