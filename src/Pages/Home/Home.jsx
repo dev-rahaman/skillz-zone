@@ -1,9 +1,9 @@
 import React from "react";
-import Slider from "../../Components/Slider/Slider";
 import Headings from "../../Components/Headings/Headings";
-import PopularClasses from "../../Components/PopularClasses/PopularClasses";
-import PopularInstructor from "../../Components/PopularInstructor/PopularInstructor";
 import AlertBox from "../../Components/AlertBox/AlertBox";
+import PopularClasses from "./PopularClasses/PopularClasses";
+import PopularInstructor from "./PopularInstructor/PopularInstructor";
+import Slider from "./Slider/Slider";
 
 const Home = () => {
   return (

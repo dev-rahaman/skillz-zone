@@ -2,8 +2,8 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import "./header.css";
-import { AuthContext } from "../../Provider/AuthProvider";
 import { FaBars } from "react-icons/fa";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);

@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../../Provider/AuthProvider";
 
 const img_hosting_token = import.meta.env.VITE_Image_Upload_token;
 

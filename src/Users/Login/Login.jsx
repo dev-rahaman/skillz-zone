@@ -4,7 +4,6 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./Login.css";
 
-import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
 import { FaGoogle } from "react-icons/fa";
 
@@ -98,7 +97,7 @@ const LoginForm = () => {
           </div>
         </div>
         {errors.password && (
-          <span style={{ color: red }}>This field is required</span>
+          <span style={{ color: "red" }}>This field is required</span>
         )}
         <button type="submit">Login</button>
       </form>
@@ -108,7 +107,7 @@ const LoginForm = () => {
         </p>
       </button>
       <p>
-        Don't have an account? <Link to="/registration">Register</Link>
+        Don`t have an account? <Link to="/registration">Register</Link>
       </p>
     </div>
   );

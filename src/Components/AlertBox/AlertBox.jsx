@@ -45,7 +45,15 @@ const AlertBox = () => {
           <span className="closeButton" onClick={closeAlertBox}>
             <FaRegWindowClose />
           </span>
-          <p>I'm working on the site now</p>
+          <div
+            style={{
+              marginTop: "80px",
+            }}
+          >
+            <h2>
+              This site is broken? Don't worry I'm working on the site now.
+            </h2>
+          </div>
         </div>
       </div>
     )

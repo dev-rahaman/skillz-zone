@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "./ManageClasses.css";
-import ManageClassesCard from "../../DashboardComponents/ManageClassesCard/ManageClassesCard";
+import ManageClassesCard from "./ManageClassesCard/ManageClassesCard";
 
 const token = localStorage.getItem("access-token");
 
-const Cart = () => {
+const ManageClasses = () => {
   const [classes, setClasses] = useState([]);
   useEffect(() => {
     fetch("https://skillz-zone-server.vercel.app/all-classes", {
@@ -35,4 +35,4 @@ const Cart = () => {
   );
 };
 
-export default Cart;
+export default ManageClasses;

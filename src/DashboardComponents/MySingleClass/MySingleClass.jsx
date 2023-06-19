@@ -1,7 +1,5 @@
 import React from "react";
 
-// TODO: COMPLETED THE STATUS
-
 const MySingleClass = ({ classesItem, idx }) => {
   const {
     _id,

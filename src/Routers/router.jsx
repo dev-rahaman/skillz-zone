@@ -1,25 +1,24 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layout/Main";
-import Login from "../Users/Login/Login";
-import Register from "../Users/Register/Register";
-import Error from "../Pages/Error/Error";
 import Home from "../Pages/Home/Home";
+import LoginForm from "../Users/Login/Login";
+import Register from "../Users/Register/Register";
 import Classes from "../Pages/Classes/Classes";
-import AddClassForm from "../DashboardPages/AddClass/AddClass";
 import Instructors from "../Pages/Instructors/Instructors";
-import Dashboard from "../Layout/Dashboard";
-import MySelectedClasses from "../DashboardPages/Students/MySelectedClasses";
-import PaymentHistory from "../DashboardPages/Students/PaymentHistory";
-import Payment from "../DashboardPages/Students/Payment";
-import DashboardManageUsers from "../DashboardPages/DashboardManageUsers/DashboardManageUsers";
-import ManageClasses from "../DashboardPages/ManageClasses/ManageClasses";
-import EnrolledClasses from "../DashboardPages/EnrolledClasses/EnrolledClasses";
-import MyAddedClasses from "../DashboardPages/MyClasses/MyAddedClasses";
-import Feedback from "../DashboardPages/Feedback/Feedback";
 import PrivateRoute from "./PrivateRoute";
-import TotalEnrolledStudents from "../DashboardPages/TotalEnrolledStudents/TotalEnrolledStudents";
+import Dashboard from "../Layout/Dashboard";
+import MySelectedClasses from "../Dashboard/StudentDashboard/Students/MySelectedClasses";
+import Payment from "../Dashboard/StudentDashboard/Students/Payment";
+import PaymentHistory from "../Dashboard/StudentDashboard/Students/PaymentHistory";
+import EnrolledClasses from "../Dashboard/StudentDashboard/EnrolledClasses/EnrolledClasses";
 import AdminRouters from "./AdminRouters";
-// import InstructorRouters from "./InstructorRouters";
+import DashboardManageUsers from "../Dashboard/AdminDashboard/ManageUsers/DashboardManageUsers";
+import Error from "../Pages/Error/Error";
+import Feedback from "../Dashboard/AdminDashboard/Feedback/Feedback";
+import TotalEnrolledStudents from "../Dashboard/TeacherDashboard/TotalEnrolledStudents/TotalEnrolledStudents";
+import MyAddedClasses from "../Dashboard/TeacherDashboard/MyClasses/MyAddedClasses";
+import AddClass from "../Dashboard/TeacherDashboard/AddClass/AddClass";
+import ManageClasses from "../Dashboard/AdminDashboard/ManageClasses/ManageClasses";
 
 const router = createBrowserRouter([
   {
@@ -32,7 +31,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/login",
-        element: <Login></Login>,
+        element: <LoginForm></LoginForm>,
       },
       {
         path: "/registration",
@@ -94,7 +93,7 @@ const router = createBrowserRouter([
         path: "/dashboard/add-class",
         element: (
           // <InstructorRouters>
-          <AddClassForm></AddClassForm>
+          <AddClass></AddClass>
           // </InstructorRouters>
         ),
       },

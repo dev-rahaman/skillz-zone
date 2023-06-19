@@ -1,8 +1,7 @@
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
-import CheckoutForm from "../CheckoutForm/CheckoutForm";
-import useMySelectedClasses from "../../Hooks/usemySelectedClasses";
 import { useEffect, useState } from "react";
+import CheckoutForm from "../../../DashboardPages/CheckoutForm/CheckoutForm";
 
 const stripePromise = loadStripe(import.meta.env.VITE_STIPE_TEST_KEY_PK);
 

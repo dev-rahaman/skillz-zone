@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import ClassCard from "../ClassesCard/ClassCard";
+import ClassCard from "../../Classes/ClassesCard/ClassCard";
 
 const token = localStorage.getItem("access-token");
 

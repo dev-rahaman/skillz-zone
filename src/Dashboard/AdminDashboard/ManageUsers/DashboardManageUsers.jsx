@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
-import UserTable from "../../DashboardComponents/UserTable/UserTable";
-import { AuthContext } from "../../Provider/AuthProvider";
+import UserTable from "../../../DashboardComponents/UserTable/UserTable";
+import { AuthContext } from "../../../Provider/AuthProvider";
 import { useQuery } from "@tanstack/react-query";
 const token = localStorage.getItem("access-token");
 

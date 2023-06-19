@@ -1,13 +1,11 @@
 import React, { useState, useEffect, useContext } from "react";
-import InstructorCard from "../../Components/InstructorCard/InstructorCard";
-import { AuthContext } from "../../Provider/AuthProvider";
 import { useQuery } from "@tanstack/react-query";
-// import InstructorCard from "../../Components/InstructorCard/InstructorCard";
+import { AuthContext } from "../../Provider/AuthProvider";
+import InstructorCard from "./InstructorCard/InstructorCard";
 
 const Instructors = () => {
   const [users1, setUsers1] = useState([]);
   const { loading } = useContext(AuthContext);
-  // console.log(users1);
 
   const token = localStorage.getItem("access-token");
 

@@ -3,7 +3,6 @@ import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { RiEyeFill, RiEyeOffFill } from "react-icons/ri";
 import "../Login/Login.css";
-import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
 
 import { useLocation, useNavigate } from "react-router-dom";

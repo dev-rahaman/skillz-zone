@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
-import MyCard from "../../DashboardComponents/MyCard";
-import { AuthContext } from "../../Provider/AuthProvider";
 import { useQuery } from "@tanstack/react-query";
+import { AuthContext } from "../../../Provider/AuthProvider";
+import MyCard from "../../../DashboardComponents/MyCard";
 
 const token = localStorage.getItem("access-token");
 

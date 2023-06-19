@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../../Provider/AuthProvider";
-import TotalEnrolledStudentsTable from "./TotalEnrolledStudentsTable";
 import { useQuery } from "@tanstack/react-query";
+import TotalEnrolledStudentsTable from "./TotalEnrolledStudentsTable/TotalEnrolledStudentsTable";
+import { AuthContext } from "../../../Provider/AuthProvider";
 
 const token = localStorage.getItem("access-token");
 

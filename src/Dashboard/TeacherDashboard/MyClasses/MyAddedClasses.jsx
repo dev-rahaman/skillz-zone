@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import MySingleClass from "../../DashboardComponents/MySingleClass/MySingleClass";
-import { AuthContext } from "../../Provider/AuthProvider";
+import { AuthContext } from "../../../Provider/AuthProvider";
 
 const token = localStorage.getItem("access-token");
 
@@ -32,11 +31,11 @@ const MyAddedClasses = () => {
       <div className="flex-container">
         {myClasses &&
           myClasses.map((classesItem, idx) => (
-            <MySingleClass
+            <MySingleClasses
               key={idx}
               classesItem={classesItem}
               idx={idx}
-            ></MySingleClass>
+            ></MySingleClasses>
           ))}
       </div>
     </div>
