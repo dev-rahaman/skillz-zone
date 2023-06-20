@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import "./Instructor.css";
-import { FaFacebook, FaInstagram, FaLinkedinIn } from "react-icons/fa";
+import { FaFacebook, FaLinkedinIn } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { RiMailLine } from "react-icons/ri";
 
 const InstructorCard = ({ instructorItem }) => {
-  const { image, name, email, phoneNumber } = instructorItem;
+  const { _id, image } = instructorItem;
 
   const [isHovered, setIsHovered] = useState(false);
 
@@ -16,6 +16,11 @@ const InstructorCard = ({ instructorItem }) => {
   const handleMouseLeave = () => {
     setIsHovered(false);
   };
+
+  const handleDetailsBtn = (id) => {
+    window.location.href = `/details/${id}`;
+  };
+
   return (
     <div
       className="instructor-cart"
@@ -36,7 +41,9 @@ const InstructorCard = ({ instructorItem }) => {
               <RiMailLine />
             </Link>
             <div>
-              <button>View Details</button>
+              <button onClick={() => handleDetailsBtn(_id)}>
+                View Details
+              </button>
             </div>
           </div>
         </>

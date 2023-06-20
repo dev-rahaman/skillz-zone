@@ -20,6 +20,7 @@ import MyAddedClasses from "../Dashboard/TeacherDashboard/MyClasses/MyAddedClass
 import AddClass from "../Dashboard/TeacherDashboard/AddClass/AddClass";
 import ManageClasses from "../Dashboard/AdminDashboard/ManageClasses/ManageClasses";
 import EditProfileForm from "../Dashboard/TeacherDashboard/EditProfile/EditProfileForm";
+import Details from "../Users/Details/Details";
 
 const router = createBrowserRouter([
   {
@@ -45,6 +46,16 @@ const router = createBrowserRouter([
       {
         path: "/instructors",
         element: <Instructors></Instructors>,
+      },
+      {
+        path: "/details/:id",
+        element: (
+          <PrivateRoute>
+            <Details></Details>
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`https://skillz-zone-server.vercel.app/users/${params.id}`),
       },
     ],
   },
@@ -74,61 +85,33 @@ const router = createBrowserRouter([
       },
       // admin
       {
-        path: "manage/users",
-        element: (
-          <AdminRouters>
-            <DashboardManageUsers></DashboardManageUsers>
-          </AdminRouters>
-        ),
+        path: "/dashboard/manage-users",
+        element: <DashboardManageUsers></DashboardManageUsers>,
       },
       {
         path: "/dashboard/manage-classes",
-        element: (
-          <AdminRouters>
-            <ManageClasses></ManageClasses>
-          </AdminRouters>
-        ),
+        element: <ManageClasses></ManageClasses>,
       },
       // Instructors
       {
         path: "/dashboard/add-class",
-        element: (
-          // <InstructorRouters>
-          <AddClass></AddClass>
-          // </InstructorRouters>
-        ),
+        element: <AddClass></AddClass>,
       },
       {
         path: "/dashboard/my-classes",
-        element: (
-          // <InstructorRouters>
-          <MyAddedClasses></MyAddedClasses>
-          // </InstructorRouters>
-        ),
+        element: <MyAddedClasses></MyAddedClasses>,
       },
       {
         path: "/dashboard/total-enrolled-students",
-        element: (
-          // <InstructorRouters>
-          <TotalEnrolledStudents></TotalEnrolledStudents>
-          // </InstructorRouters>
-        ),
+        element: <TotalEnrolledStudents></TotalEnrolledStudents>,
       },
       {
         path: "/dashboard/feedback",
-        element: (
-          // <InstructorRouters>
-          <Feedback></Feedback>
-          // </InstructorRouters>
-        ),
+        element: <Feedback></Feedback>,
       },
       {
         path: "/dashboard/editprofile",
-        element: (
-          // <InstructorRouters>
-          <EditProfileForm></EditProfileForm>
-          // </InstructorRouters>
-        ),
+        element: <EditProfileForm></EditProfileForm>,
       },
     ],
   },

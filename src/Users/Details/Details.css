@@ -1,0 +1,53 @@
+.Details {
+  width: 700px;
+  padding: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.cart-heading {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.cart-title {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.cart-bio {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.cart-phone,
+.cart-email {
+  font-size: 20px;
+}
+
+.cart-social-links {
+  margin-top: 50px;
+  font-size: 20px;
+}
+
+.cart-social-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.cart-social-links li {
+  margin-bottom: 5px;
+}
+
+.cart-social-links a {
+  text-decoration: none;
+}
+
+.Details .social {
+  font-size: 30px;
+  background-color: #112240;
+  padding: 10px;
+  margin: 20px;
+  border-radius: 3px;
+  color: #ccc;
+}

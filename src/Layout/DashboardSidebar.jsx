@@ -64,6 +64,9 @@ const DashboardSidebar = () => {
           <NavLink to="/dashboard/enrolled-classes" activeclassname="active">
             <FaHistory /> Enrolled Classes
           </NavLink>
+          <NavLink to="/dashboard/editprofile" activeclassname="active">
+            <FaMenorah /> Edit Profile
+          </NavLink>
         </>
       ) : instructor ? (
         <>
@@ -71,18 +74,15 @@ const DashboardSidebar = () => {
           <NavLink to="/dashboard/add-class" activeclassname="active">
             <FaCalendarPlus /> Add Class
           </NavLink>
-
           <NavLink to="/dashboard/my-classes" activeclassname="active">
             <FaMenorah /> My Added Classes
           </NavLink>
-
           <NavLink
             to="/dashboard/total-enrolled-students"
             activeclassname="active"
           >
             <FaStudiovinari /> Total Enrolled Students
           </NavLink>
-
           <NavLink to="/dashboard/editprofile" activeclassname="active">
             <FaMenorah /> Edit Profile
           </NavLink>
@@ -95,6 +95,9 @@ const DashboardSidebar = () => {
           </NavLink>
           <NavLink to="/dashboard/manage-users" activeclassname="active">
             <FaEdit /> Manage Users
+          </NavLink>
+          <NavLink to="/dashboard/editprofile" activeclassname="active">
+            <FaMenorah /> Edit Profile
           </NavLink>
         </>
       ) : null}

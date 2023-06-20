@@ -19,7 +19,7 @@ const Feedback = () => {
       .then((data) => {
         setFeedback1(data);
       });
-  }, [url]);
+  }, [url, token]);
 
   return (
     <div>
