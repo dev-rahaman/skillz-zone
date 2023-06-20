@@ -40,6 +40,7 @@ const Register = () => {
             password: data.password,
             role: "student",
           };
+          
           fetch("https://skillz-zone-server.vercel.app/users", {
             method: "POST",
             headers: {

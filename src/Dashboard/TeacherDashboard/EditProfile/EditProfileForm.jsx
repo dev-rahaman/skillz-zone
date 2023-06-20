@@ -1,17 +1,54 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { AuthContext } from "../../../Provider/AuthProvider";
 
 function EditProfileForm() {
   const { register, handleSubmit } = useForm();
+  const { user } = useContext(AuthContext);
+  const [users, setUsers] = useState([]);
+  const email = user?.email;
+
+  useEffect(() => {
+    fetch("https://skillz-zone-server.vercel.app/users")
+      .then((res) => res.json())
+      .then((data) => {
+        // console.log(data);
+        setUsers(data);
+      });
+  }, []);
+
+  const userEmail = users.filter((em) => em?.email == email);
+  const userID = userEmail.find((id) => id?._id);
+  const id = userID?._id;
 
   const onSubmit = (data) => {
-    console.log(data);
-    // Perform form submission logic here
+    const allData = {
+      name: data.name,
+      email: data.email,
+      title: data.title,
+      bio: data.bio,
+      image: data.photo,
+      website: data.website,
+      graduation: data.graduation,
+      facebook: data.facebook,
+      instagram: data.instagram,
+      linkedin: data.linkedin,
+      pinterest: data.pinterest,
+    };
+
+    fetch(`https://skillz-zone-server.vercel.app/updated-profile/${id}`, {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(allData),
+    });
   };
 
   return (
     <div className="edit-profile-form">
       <form onSubmit={handleSubmit(onSubmit)}>
+        <h2>About</h2>
         <div className="form-group">
           <label htmlFor="name">Name:</label>
           <input
@@ -20,6 +57,20 @@ function EditProfileForm() {
             name="name"
             {...register("name")}
             placeholder="e.g. RS Abdur Rahaman Sultany"
+            defaultValue={user?.displayName}
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="name">Email:</label>
+          <input
+            type="text"
+            id="email"
+            name="email"
+            {...register("email")}
+            placeholder="e.g. RS Abdur Rahaman Sultany"
+            defaultValue={user?.email}
+            readOnly
           />
         </div>
 
@@ -47,10 +98,21 @@ function EditProfileForm() {
         </div>
 
         <div className="form-group">
+          <label htmlFor="graduation">Graduation:</label>
+          <input
+            type="text"
+            id="graduation"
+            name="graduation"
+            {...register("graduation")}
+            placeholder=""
+          />
+        </div>
+
+        <div className="form-group">
           <label htmlFor="photo">Photo:</label>
           <input type="file" id="photo" name="photo" {...register("photo")} />
         </div>
-
+        <h2>Social</h2>
         <div className="form-group">
           <label htmlFor="website">Website Link:</label>
           <input
@@ -59,17 +121,6 @@ function EditProfileForm() {
             name="website"
             {...register("website")}
             placeholder="e.g. https://rs-rahaman.com"
-          />
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="graduation">Graduation:</label>
-          <input
-            type="text"
-            id="graduation"
-            name="graduation"
-            {...register("graduation")}
-            placeholder=""
           />
         </div>
 
