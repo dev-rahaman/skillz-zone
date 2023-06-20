@@ -50,9 +50,7 @@ const AlertBox = () => {
               marginTop: "80px",
             }}
           >
-            <h2>
-              This site is broken? Don't worry I'm working on the site now.
-            </h2>
+            <h2>This site is broken? Don't worry I'm Updating the site now.</h2>
           </div>
         </div>
       </div>

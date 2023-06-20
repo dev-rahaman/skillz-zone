@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import ClassesCart from "./ClassesCart";
-
 const token = localStorage.getItem("access-token");
 
 const Classes = () => {
@@ -22,7 +21,7 @@ const Classes = () => {
   }, []);
 
   return (
-    <div className="flex-container">
+    <div className="classes-cart-container">
       {classes &&
         classes.map((classItem, idx) => {
           return <ClassesCart key={idx} classItem={classItem}></ClassesCart>;

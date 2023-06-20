@@ -19,6 +19,7 @@ import TotalEnrolledStudents from "../Dashboard/TeacherDashboard/TotalEnrolledSt
 import MyAddedClasses from "../Dashboard/TeacherDashboard/MyClasses/MyAddedClasses";
 import AddClass from "../Dashboard/TeacherDashboard/AddClass/AddClass";
 import ManageClasses from "../Dashboard/AdminDashboard/ManageClasses/ManageClasses";
+import EditProfileForm from "../Dashboard/TeacherDashboard/EditProfile/EditProfileForm";
 
 const router = createBrowserRouter([
   {
@@ -118,6 +119,14 @@ const router = createBrowserRouter([
         element: (
           // <InstructorRouters>
           <Feedback></Feedback>
+          // </InstructorRouters>
+        ),
+      },
+      {
+        path: "/dashboard/editprofile",
+        element: (
+          // <InstructorRouters>
+          <EditProfileForm></EditProfileForm>
           // </InstructorRouters>
         ),
       },

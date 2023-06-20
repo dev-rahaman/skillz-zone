@@ -3,7 +3,7 @@ import Swal from "sweetalert2";
 
 const token = localStorage.getItem("access-token");
 
-const ClassCard = ({ classItem }) => {
+const ClassCart = ({ classItem }) => {
   const {
     className,
     instructorName,
@@ -13,7 +13,7 @@ const ClassCard = ({ classItem }) => {
     imageURL,
   } = classItem;
 
-  const handlePopularCardButton = () => {
+  const handlePopularCartButton = () => {
     Swal.fire({
       title: "Are you sure?",
       text: "You won't to added bye the classes",
@@ -40,22 +40,25 @@ const ClassCard = ({ classItem }) => {
   };
 
   return (
-    <div className="card">
+    <div className="classes-cart">
       <div>
-        <img src={imageURL} alt="Course" className="card__image-home" />
-      </div>
-      <div className="card__details">
-        <h2 className="card__name">Class Name:{className}</h2>
-        <p className="card__instructor">Instructor:{instructorName}</p>
-        <p className="card__email">Email: {instructorEmail}</p>
-        <p className="card__seats">Available Seats: {availableSeats}</p>
-        <p className="card__price">Price: ${price}</p>
-        {/* <button className="card__button" onClick={handlePopularCardButton}>
-          Select
-        </button> */}
+        <img src={imageURL} alt="Product 1" className="classes-cart__image" />
+        <div className="classes-cart__details">
+          <h2 className="classes-cart__heading">Class Name: {className}</h2>
+          <p className="classes-cart__instructor">
+            Instructor: {instructorName}
+          </p>
+          <p className="classes-cart__seats">
+            Available Seats: {availableSeats}
+          </p>
+          <p className="classes-cart__price">Price: ${price}</p>
+          <button className="button" onClick={handlePopularCartButton}>
+            Enroll Now!
+          </button>
+        </div>
       </div>
     </div>
   );
 };
 
-export default ClassCard;
+export default ClassCart;

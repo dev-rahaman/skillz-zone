@@ -36,7 +36,6 @@ const ClassesCart = ({ classItem }) => {
   const currentUser = users.find((item) => item?.email === email);
 
   // console.log(currentUser?.role);
-  const student = currentUser?.role === "student";
   const instructor = currentUser?.role === "instructor";
   const admin = currentUser?.role === "admin";
 
@@ -105,38 +104,42 @@ const ClassesCart = ({ classItem }) => {
   };
 
   return (
-    <div
-      className={
-        admin || instructor || availableSeats == 0 ? "card-bg-red" : ""
-      }
-    >
-      <div className="card">
-        <div className="card__image">
-          <img src={imageURL} alt="Course" style={{ height: "150px" }} />
-        </div>
-        <div className="card__details">
-          <h2 className="card__name">Class Name:{className}</h2>
-          <p className="card__instructor">Instructor:{instructorName}</p>
-          <p className="card__email">Email: {instructorEmail}</p>
-          <p className="card__seats">Available Seats: {availableSeats}</p>
-          <p className="card__seats">Enrolled Students: {enrolledStudents}</p>
-          <p className="card__price">Price: ${price}</p>
-          <p className="card__price">status: {status}</p>
-
-          <button
-            onClick={handleSelectButton}
-            disabled={
-              availableSeats == 0 ||
-              instructor ||
-              admin ||
-              isSelectButtonDisabled
-            }
-          >
-            Select
-          </button>
+    <>
+      <div
+        className={`classes-cart ${
+          admin || instructor || availableSeats === "0" ? "bg-red" : ""
+        }`}
+      >
+        <div>
+          <img
+            src={imageURL}
+            alt="class image"
+            className="classes-cart__image"
+          />
+          <div className="classes-cart__details">
+            <h2 className="classes-cart__heading">Class Name: {className}</h2>
+            <p className="classes-cart__instructor">
+              Instructor: {instructorName}
+            </p>
+            <p className="classes-cart__seats">
+              Available Seats: {availableSeats}
+            </p>
+            <p className="classes-cart__price">Price: ${price}</p>
+            <button
+              onClick={handleSelectButton}
+              disabled={
+                availableSeats == 0 ||
+                instructor ||
+                admin ||
+                isSelectButtonDisabled
+              }
+            >
+              Add to card
+            </button>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

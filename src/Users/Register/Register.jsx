@@ -6,6 +6,7 @@ import "../Login/Login.css";
 import Swal from "sweetalert2";
 
 import { useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
 const Register = () => {
   const { createUser, logout, updateUser } = useContext(AuthContext);
 

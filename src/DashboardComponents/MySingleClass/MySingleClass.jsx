@@ -14,27 +14,21 @@ const MySingleClass = ({ classesItem, idx }) => {
     adminFeedback,
   } = classesItem;
 
-  const handleUpdate = (id) => {};
-
   return (
-    <div className="cart-container">
-      {/* <div style={{ textAlign: "right" }}>{idx + 1}</div> */}
+    <div className="addedClasses-cart">
       <div>
-        <img src={imageURL} alt="Class Image" />
-      </div>
-      <div>
-        <h2>{className}</h2>
-        <p>Instructor: {instructorName}</p>
-        <p>Email: {instructorEmail}</p>
-        <p>Price: {price}</p>
-        <p>Available Seats: {availableSeats}</p>
-        <p>Enrolled Students: {enrolledStudents}</p>
-        <p>Status: {status}</p>
-
-        {status === "denied" ? <p>Admin Feedback: {adminFeedback}</p> : null}
-      </div>
-      <div>
-        <button onClick={() => handleUpdate(_id)}>Update</button>
+        <img src={imageURL} alt="Product 1" className="classes-cart__image" />
+        <div className="classes-cart__details">
+          <h2 className="classes-cart__heading">Class Name: {className}</h2>
+          <p className="classes-cart__instructor">
+            Instructor: {instructorName}
+          </p>
+          <p className="classes-cart__seats">
+            Available Seats: {availableSeats}
+          </p>
+          <p className="classes-cart__price">Price: ${price}</p>
+          <button className="button">Update Now</button>
+        </div>
       </div>
     </div>
   );

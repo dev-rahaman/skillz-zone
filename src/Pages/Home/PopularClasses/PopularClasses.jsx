@@ -18,9 +18,9 @@ const PopularClasses = () => {
       });
   }, []);
 
-  const sorting = classes.slice(0, 6);
+  const sorting = classes.slice(0, 9);
   return (
-    <div className="flex-container">
+    <div className="classes-cart-container">
       {sorting &&
         sorting.map((classItem, idx) => (
           <ClassCard key={idx} classItem={classItem}></ClassCard>

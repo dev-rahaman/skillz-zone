@@ -1,22 +1,19 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./Login.css";
-
 import Swal from "sweetalert2";
 import { FaGoogle } from "react-icons/fa";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const token = localStorage.getItem("access-token");
 
 const LoginForm = () => {
   const { loginUser, GoogleSignIn } = useContext(AuthContext);
-  const [disabled, setDisabled] = useState(true);
   const navigate = useNavigate();
   const location = useLocation();
-
   const from = location.state?.from?.pathname || "/";
-
   const {
     register,
     handleSubmit,
@@ -30,13 +27,11 @@ const LoginForm = () => {
       const user = result.user;
       // console.log(user);
       Swal.fire({
-        title: "Your Account is Login Successfully.",
-        showClass: {
-          popup: "animate__animated animate__fadeInDown",
-        },
-        hideClass: {
-          popup: "animate__animated animate__fadeOutUp",
-        },
+        position: "top-center",
+        icon: "success",
+        title: "Login Successfully",
+        showConfirmButton: false,
+        timer: 1500,
       });
       navigate(from, { replace: true });
     });

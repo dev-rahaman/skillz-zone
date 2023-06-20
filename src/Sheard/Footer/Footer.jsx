@@ -85,13 +85,13 @@ const Footer = () => {
             <h4>Our Services</h4>
             <ul>
               <li>
-                <Link to="/programmable">Programmable Toys</Link>
+                <Link to="/programmable">Popular Instructor</Link>
               </li>
               <li>
-                <Link to="/transformable">Transformable Toys</Link>
+                <Link to="/transformable">Popular Classes</Link>
               </li>
               <li>
-                <Link to="/educational">Educational Toys</Link>
+                <Link to="/educational">Be Come Pro Seller</Link>
               </li>
             </ul>
           </div>
@@ -142,7 +142,7 @@ const Footer = () => {
             paddingBottom: "20px",
           }}
         >
-          © 2023 [ALIVE BABY]
+          © 2023 [SKILLZ ZONE]
         </p>
       </footer>
     </>

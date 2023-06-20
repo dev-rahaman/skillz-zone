@@ -13,8 +13,6 @@ import {
   FaEdit,
   FaHome,
 } from "react-icons/fa";
-// import useAdmin from "../Hooks/useAdmin";
-// import useInstructor from "../Hooks/useInstructor";
 
 const token = localStorage.getItem("access-token");
 
@@ -46,13 +44,9 @@ const DashboardSidebar = () => {
   }, [fetchedUsers]);
   const currentUser = users.find((item) => item?.email === email);
 
-  // console.log(currentUser?.role);
   const student = currentUser?.role === "student";
   const instructor = currentUser?.role === "instructor";
   const admin = currentUser?.role === "admin";
-
-  // const [isAdmin] = useAdmin();
-  // const [isInstructor] = useInstructor();
 
   return (
     <div className="sidebar">
@@ -77,14 +71,20 @@ const DashboardSidebar = () => {
           <NavLink to="/dashboard/add-class" activeclassname="active">
             <FaCalendarPlus /> Add Class
           </NavLink>
+
           <NavLink to="/dashboard/my-classes" activeclassname="active">
             <FaMenorah /> My Added Classes
           </NavLink>
+
           <NavLink
             to="/dashboard/total-enrolled-students"
             activeclassname="active"
           >
             <FaStudiovinari /> Total Enrolled Students
+          </NavLink>
+
+          <NavLink to="/dashboard/editprofile" activeclassname="active">
+            <FaMenorah /> Edit Profile
           </NavLink>
         </>
       ) : admin ? (

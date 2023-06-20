@@ -10,12 +10,16 @@ const Home = () => {
     <div>
       <Slider></Slider>
       <Headings
-        heading={"-------------Popular Classes---------------"}
+        title={"see our"}
+        heading={"Popular Classes"}
+        brows={"Brows More"}
       ></Headings>
       <PopularClasses></PopularClasses>
       <AlertBox></AlertBox>
       <Headings
-        heading={"-------------Popular Instructors---------------"}
+        title={"see our"}
+        heading={"Popular Instructor"}
+        brows={"Brows More"}
       ></Headings>
       <PopularInstructor></PopularInstructor>
     </div>
