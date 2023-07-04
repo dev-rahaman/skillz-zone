@@ -50,9 +50,9 @@ const router = createBrowserRouter([
       {
         path: "/details/:id",
         element: (
-          <PrivateRoute>
-            <Details></Details>
-          </PrivateRoute>
+          // <PrivateRoute>
+          <Details></Details>
+          // </PrivateRoute>
         ),
         loader: ({ params }) =>
           fetch(`https://skillz-zone-server.vercel.app/users/${params.id}`),

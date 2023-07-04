@@ -58,6 +58,7 @@ function EditProfileForm() {
             {...register("name")}
             placeholder="e.g. RS Abdur Rahaman Sultany"
             defaultValue={user?.displayName}
+            readOnly
           />
         </div>
 
